@@ -8,7 +8,7 @@ import Slider from "@/components/slider/Slider";
 export default function Home() {
     return (
         <>
-            <main className="min-h-screen gap-8 container mx-auto text-white">
+            <main className="min-h-screen gap-8 text-white">
                 <Header />
                 <Hero />
                 <Slider />

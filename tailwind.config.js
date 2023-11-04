@@ -16,6 +16,9 @@ module.exports = {
                 fuentelato: ["var(--font-lato)"],
                 fuenteroboto: ["var(--font-roboto)"],
             },
+            lineClamp: {
+                12: "12",
+            },
         },
     },
     plugins: [],
