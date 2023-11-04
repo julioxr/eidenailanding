@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import DiscName from "@/components/svg/DiscName";
 import SpotifyLogo from "@/components/svg/SpotifyLogo";
 
@@ -9,7 +10,7 @@ const Hero = () => {
     return (
         <section className="bg-mainBlue min-h-[calc(100vh-90px)] flex flex-col bg-[url('/estrellas.svg')] relative">
             <div className="h-full w-full absolute z-10">
-                <img
+                <Image
                     src="/background.png"
                     alt=""
                     className="absolute h-4/5 object-cover z-10 xl:right-12"
@@ -32,25 +33,26 @@ const Hero = () => {
                                 }`}
                             >
                                 <span>
-                                    "Mudando Coplas" tomó vida entre marzo y
-                                    agosto de 2022 en Estudio Diapasón,
+                                    &quot;Mudando Coplas&quot; tomó vida entre
+                                    marzo y agosto de 2022 en Estudio Diapasón,
                                     provincia de Mendoza con el desafío de
                                     combinar horarios y actividades de por
                                     medio, logramos reflejar la calidez y el
                                     cariño con el que trabajamos, grabamos y
                                     creamos.
                                 </span>
+
                                 <br />
                                 <br />
                                 <span className="mt-2">
                                     Javier Ledda estuvo a nuestro lado, no solo
                                     técnica sino emocionalmente, compartiendo
                                     mateadas y haciéndonos sentir como en casa.
-                                    En "Esta tonada doy", nos honró con su
-                                    talento en las guitarras y el guitarrón.
-                                    Además, durante el verano de 2023, se
-                                    encargó de darle el toque final con la
-                                    masterización, ¡siempre al tanto de cada
+                                    En &quot;Esta tonada doy&quot;, nos honró
+                                    con su talento en las guitarras y el
+                                    guitarrón. Además, durante el verano de
+                                    2023, se encargó de darle el toque final con
+                                    la masterización, ¡siempre al tanto de cada
                                     idea que se nos ocurría!.
                                 </span>
                                 <br />
