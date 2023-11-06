@@ -1,19 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import DiscName from "@/components/svg/DiscName";
 import SpotifyLogo from "@/components/svg/SpotifyLogo";
 
 const Hero = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isAndroid, setIsAndroid] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const userAgent = navigator.userAgent;
+            setIsAndroid(/Android/i.test(userAgent));
+        }
+    }, []);
 
     return (
-        <section className="bg-mainBlue min-h-[calc(100vh-90px)] flex flex-col bg-[url('/estrellas.svg')] relative">
-            <div className="h-full w-full absolute z-10">
+        <section className="bg-mainBlue flex flex-col bg-[url('/estrellas.svg')] relative">
+            <div className="h-full w-full absolute z-10 ">
                 <Image
                     src="/background.png"
                     alt=""
                     className="absolute h-4/5 object-cover z-10 xl:right-12"
+                    height={200}
+                    width={800}
                 />
             </div>
             <div className="bg-black/60 min-h-[calc(100vh-90px)] z-30">
@@ -28,9 +38,13 @@ const Hero = () => {
                     <div className="max-w-md px-9 z-20 flex flex-col xl:px-0 xl:max-w-2xl">
                         <div>
                             <p
-                                className={`${
-                                    isOpen ? "line-clamp-none" : "line-clamp-3"
-                                }`}
+                                className={
+                                    isAndroid
+                                        ? isOpen
+                                            ? "line-clamp-none"
+                                            : "line-clamp-3"
+                                        : "line-clamp-none"
+                                }
                             >
                                 <span>
                                     &quot;Mudando Coplas&quot; tomó vida entre
@@ -75,7 +89,7 @@ const Hero = () => {
                             }}
                             className="text-green-500 underline self-end z-20 mt-2 cursor-pointer"
                         >
-                            {isOpen ? "Leer menos" : "Leer más"}
+                            {isAndroid && (isOpen ? "Leer menos" : "Leer más")}
                         </span>
                     </div>
 
