@@ -1,10 +1,10 @@
 import React from "react";
 
-const SpotifyLogo = () => {
+const SpotifyLogo = ({ w = 92, h = 29 }) => {
     return (
         <svg
-            width="92"
-            height="29"
+            width={w}
+            height={h}
             viewBox="0 0 92 29"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

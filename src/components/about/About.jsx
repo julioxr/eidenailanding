@@ -1,11 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const About = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isAndroid, setIsAndroid] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const userAgent = navigator.userAgent;
+            setIsAndroid(/Android/i.test(userAgent));
+        }
+    }, []);
 
     return (
-        <section className="flex flex-col gap-8 justify-center items-center pt-12 h-full z-20 container mx-auto bg-mainBlue pb-24">
+        <section className="flex flex-col gap-8 justify-center items-center pt-12 h-full z-20 container mx-auto bg-mainBlue pb-24 text-white">
             <div className="w-full px-14 flex flex-col font-fuentelato text-5xl z-20 xl:w-auto xl:self-start xl:text-7xl">
                 <h2 className="self-start">SOMOS</h2>
                 <h2 className="self-end">EIDENAI</h2>
@@ -38,9 +46,13 @@ const About = () => {
                 </p>
 
                 <div
-                    className={`transition-height ease-in-out duration-500 flex flex-col gap-4 ${
-                        isOpen ? "block" : "hidden"
-                    }`}
+                    className={
+                        isAndroid
+                            ? isOpen
+                                ? "line-clamp-none"
+                                : "line-clamp-3"
+                            : "line-clamp-none"
+                    }
                 >
                     <h3 className="font-medium text-lg">¿Qué es Eidenai?</h3>
                     <p>
@@ -85,7 +97,7 @@ const About = () => {
                     }}
                     className="text-green-500 underline self-end z-20 -mt-2 cursor-pointer"
                 >
-                    {isOpen ? "Leer menos" : "Leer más"}
+                    {isAndroid && (isOpen ? "Leer menos" : "Leer más")}
                 </span>
             </div>
         </section>
