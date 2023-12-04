@@ -11,8 +11,6 @@ const AlbumImage = ({ background, children }) => {
     //         });
     //     }
     // }, [lastBackgroundRef]);
-    console.log(background);
-
     return (
         <>
             <div
