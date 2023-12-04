@@ -1,12 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import AlbumImage from "@/components/album/AlbumImage";
 import AlbumTextCard from "@/components/album/AlbumTextCard";
 import { FaRegCircle } from "react-icons/fa";
 import AlbumData from "../../../data/datos.json";
 import Song from "@/components/song/Song";
+import Loader from "@/components/loader/Loader";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Album = () => {
+    const lastBackgroundRef = useRef(null);
+    const [showLoader, setShowLoader] = useState(true);
     const [showLyrics, setShowLyrics] = useState(false);
     const [song, setSong] = useState({});
 
@@ -18,24 +22,29 @@ const Album = () => {
         setSong(filteredSong);
     };
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setShowLoader(false);
+            if (lastBackgroundRef.current) {
+                lastBackgroundRef.current.scrollIntoView({
+                    block: "end",
+                });
+            }
+        }, 1500); // Simula una carga de 1 segundo. Ajusta según sea necesario.
+
+        return () => clearTimeout(timeout);
+    }, [lastBackgroundRef]);
+
     return (
         <>
+            {showLoader && <Loader />}
+
             <section className="snap-y snap-mandatory h-screen w-screen text-4xl overflow-x-hidden text-white relative">
-                {/* Circulos de guia */}
-                <div
-                    id="dots"
-                    className="fixed right-8 z-20 flex flex-col items-center justify-center text-2xl gap-8 h-screen"
-                >
-                    <FaRegCircle />
-                    <FaRegCircle />
-                    <FaRegCircle />
-                    <FaRegCircle />
-                    <FaRegCircle />
-                    <FaRegCircle />
-                </div>
-
                 {/* Componente con la letra y data de la cancion */}
-
+                <div className="fixed z-30 flex items-center justify-center ml-4 mt-4 cursor-pointer bg-black/20 p-2 rounded-full">
+                    <IoIosArrowBack className="text-2xl" />
+                    <p className="text-base pl-1">Volver</p>
+                </div>
                 {showLyrics && (
                     <Song setShowLyrics={setShowLyrics} song={song} />
                 )}
@@ -56,7 +65,7 @@ const Album = () => {
                 {/* Imagen 5 */}
                 <AlbumImage background="back_5.jpg">
                     <div
-                        className="absolute top-8 right-8"
+                        className="absolute top-20 right-8"
                         onClick={() => handleLyrics("Canto de la Rama")}
                     >
                         <AlbumTextCard
@@ -126,23 +135,28 @@ const Album = () => {
                 </AlbumImage>
 
                 {/* Imagen 1 */}
-                <AlbumImage background="back_1.jpg">
-                    <div
-                        className="absolute top-8 right-8"
-                        onClick={() => handleLyrics("Esta tonada doy")}
-                    >
-                        <AlbumTextCard
-                            title="Esta tonada doy"
-                            subtitle="Aire de tonada"
-                        />
-                    </div>
-                    <div
-                        className="absolute bottom-16 left-8 cursor-pointer"
-                        onClick={() => handleLyrics("Peón Viñador")}
-                    >
-                        <AlbumTextCard title="Peón Viñador" subtitle="Chaya" />
-                    </div>
-                </AlbumImage>
+                <div ref={lastBackgroundRef}>
+                    <AlbumImage background="back_1.jpg">
+                        <div
+                            className="absolute top-20 right-8"
+                            onClick={() => handleLyrics("Esta tonada doy")}
+                        >
+                            <AlbumTextCard
+                                title="Esta tonada doy"
+                                subtitle="Aire de tonada"
+                            />
+                        </div>
+                        <div
+                            className="absolute bottom-16 left-8 cursor-pointer"
+                            onClick={() => handleLyrics("Peón Viñador")}
+                        >
+                            <AlbumTextCard
+                                title="Peón Viñador"
+                                subtitle="Chaya"
+                            />
+                        </div>
+                    </AlbumImage>
+                </div>
             </section>
         </>
     );
