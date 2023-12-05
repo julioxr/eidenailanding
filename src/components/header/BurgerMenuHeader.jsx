@@ -29,7 +29,7 @@ const BurgerMenuHeader = ({ handleMenu }) => {
                             onClick={() => {
                                 handleMenu();
                             }}
-                            href="/nosotros"
+                            href="/#"
                         >
                             Nosotros
                         </Link>

@@ -40,7 +40,6 @@ const Slider = () => {
                         alt={image.alt}
                         width={1920}
                         height={1080}
-                        className="px-1"
                         key={index}
                         // className="px-1 -translate-x-3 xl:-translate-x-12"
                     />

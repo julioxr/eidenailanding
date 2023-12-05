@@ -1,12 +1,13 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import AlbumImage from "@/components/album/AlbumImage";
 import AlbumTextCard from "@/components/album/AlbumTextCard";
-import { FaRegCircle } from "react-icons/fa";
 import AlbumData from "../../../data/datos.json";
 import Song from "@/components/song/Song";
 import Loader from "@/components/loader/Loader";
 import { IoIosArrowBack } from "react-icons/io";
+import { FaRegCircle } from "react-icons/fa";
 
 const Album = () => {
     const lastBackgroundRef = useRef(null);
@@ -39,11 +40,13 @@ const Album = () => {
         <>
             {showLoader && <Loader />}
 
-            <section className="snap-y snap-mandatory h-screen w-screen text-4xl overflow-x-hidden text-white relative">
+            <section className="snap-y snap-mandatory h-screen w-screen text-4xl overflow-x-hidden text-white relative overflow-y-scroll no-scrollbar">
                 {/* Componente con la letra y data de la cancion */}
                 <div className="fixed z-30 flex items-center justify-center ml-4 mt-4 cursor-pointer bg-black/20 p-2 rounded-full">
                     <IoIosArrowBack className="text-2xl" />
-                    <p className="text-base pl-1">Volver</p>
+                    <Link className="text-base pl-1" href="/">
+                        Volver
+                    </Link>
                 </div>
                 {showLyrics && (
                     <Song setShowLyrics={setShowLyrics} song={song} />
@@ -52,7 +55,7 @@ const Album = () => {
                 {/* Imagen 6 */}
                 <AlbumImage background="back_6.jpg">
                     <div
-                        className="absolute bottom-24 left-8"
+                        className="absolute bottom-24 left-8 xl:left-96 cursor-pointer"
                         onClick={() => handleLyrics("La sixto Violín")}
                     >
                         <AlbumTextCard
@@ -65,7 +68,7 @@ const Album = () => {
                 {/* Imagen 5 */}
                 <AlbumImage background="back_5.jpg">
                     <div
-                        className="absolute top-20 right-8"
+                        className="absolute top-20 right-8 xl:right-auto xl:left-96 cursor-pointer"
                         onClick={() => handleLyrics("Canto de la Rama")}
                     >
                         <AlbumTextCard
@@ -74,7 +77,7 @@ const Album = () => {
                         />
                     </div>
                     <div
-                        className="absolute bottom-16 right-8"
+                        className="absolute bottom-16 right-8 xl:right-96 cursor-pointer"
                         onClick={() => handleLyrics("Garzas Viajeras")}
                     >
                         <AlbumTextCard
@@ -87,7 +90,7 @@ const Album = () => {
                 {/* Imagen 4 */}
                 <AlbumImage background="back_4.jpg">
                     <div
-                        className="absolute bottom-20 left-8"
+                        className="absolute bottom-20 left-8 xl:left-96 cursor-pointer"
                         onClick={() => handleLyrics("Posadeña Linda")}
                     >
                         <AlbumTextCard
@@ -100,7 +103,7 @@ const Album = () => {
                 {/* Imagen 3 */}
                 <AlbumImage background="back_3.jpg">
                     <div
-                        className="absolute bottom-20 right-8"
+                        className="absolute bottom-20 right-8 xl:right-96 cursor-pointer"
                         onClick={() => handleLyrics("Amanecer")}
                     >
                         <AlbumTextCard
@@ -113,16 +116,16 @@ const Album = () => {
                 {/* Imagen 2 */}
                 <AlbumImage background="back_2.jpg">
                     <div
-                        className="absolute top-20 left-8"
+                        className="absolute top-20 left-8 xl:left-96 cursor-pointer"
                         onClick={() => handleLyrics("Soledad - Jujuy 1941")}
                     >
                         <AlbumTextCard
                             title="Soledad - Jujuy 1941"
-                            subtitle="Aire litoraleño"
+                            // subtitle="Aire litoraleño"
                         />
                     </div>
                     <div
-                        className="absolute bottom-80 right-8"
+                        className="absolute bottom-80 right-8 xl:right-96 cursor-pointer"
                         onClick={() =>
                             handleLyrics("La Plumita - La cocinerita")
                         }
@@ -138,7 +141,7 @@ const Album = () => {
                 <div ref={lastBackgroundRef}>
                     <AlbumImage background="back_1.jpg">
                         <div
-                            className="absolute top-20 right-8"
+                            className="absolute top-20 right-8 xl:right-96 cursor-pointer"
                             onClick={() => handleLyrics("Esta tonada doy")}
                         >
                             <AlbumTextCard
@@ -147,7 +150,7 @@ const Album = () => {
                             />
                         </div>
                         <div
-                            className="absolute bottom-16 left-8 cursor-pointer"
+                            className="absolute bottom-16 left-8 xl:left-96 cursor-pointer"
                             onClick={() => handleLyrics("Peón Viñador")}
                         >
                             <AlbumTextCard

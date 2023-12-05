@@ -21,7 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${lato.variable} ${roboto.variable} bg-mainBlue`}>
+            <body
+                className={`${lato.variable} ${roboto.variable} bg-mainBlue overflow-y-scroll no-scrollbar`}
+            >
                 {children}
             </body>
         </html>

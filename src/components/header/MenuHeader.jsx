@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Logo from "@/components/svg/Logo";
 import BurgerMenuIcon from "./BurgerMenuIcon";
+import SpotifyLogo from "../svg/SpotifyLogo";
 
 const MenuHeader = ({ isMenuOpen, setIsMenuOpen }) => {
     return (
@@ -10,9 +12,19 @@ const MenuHeader = ({ isMenuOpen, setIsMenuOpen }) => {
                 </div>
                 <div className="hidden md:block h-full">
                     <ul className="list-none gap-6 flex text-lg font-medium items-center h-full text-white">
-                        <li className="w-20">El album</li>
-                        <li className="w-20">Nosotros</li>
-                        <li className="w-20">Spotify</li>
+                        <Link href="/album" className="w-20">
+                            El album
+                        </Link>
+                        <Link href="#" className="w-20">
+                            Nosotros
+                        </Link>
+                        <span className="border h-10"></span>
+                        <Link
+                            href="https://open.spotify.com/intl-es/artist/71baCB6blbKsE4HjrWbUZn?si=vxEtBkiRTryt3cmEdKi_ng"
+                            className="w-20"
+                        >
+                            <SpotifyLogo w={"82"} h={"29"} />
+                        </Link>
                     </ul>
                 </div>
                 <div
