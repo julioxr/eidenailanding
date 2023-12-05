@@ -18,13 +18,15 @@ const MenuHeader = ({ isMenuOpen, setIsMenuOpen }) => {
                         <Link href="#" className="w-20">
                             Nosotros
                         </Link>
-                        <span className="border h-10"></span>
+                        {/* <span className="border h-10"></span>
                         <Link
                             href="https://open.spotify.com/intl-es/artist/71baCB6blbKsE4HjrWbUZn?si=vxEtBkiRTryt3cmEdKi_ng"
                             className="w-20"
                         >
-                            <SpotifyLogo w={"82"} h={"29"} />
-                        </Link>
+                            <button>
+                                <SpotifyLogo w={"82"} h={"29"} />
+                            </button>
+                        </Link> */}
                     </ul>
                 </div>
                 <div
