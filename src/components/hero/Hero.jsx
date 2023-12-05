@@ -16,7 +16,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="bg-mainBlue flex flex-col bg-[url('/estrellas.svg')] relative">
+        <section className="bg-mainBlue flex flex-col bg-[url('/estrellas.svg')] relative text-white">
             <div className="h-full w-full absolute z-10 ">
                 <Image
                     src="/background.png"

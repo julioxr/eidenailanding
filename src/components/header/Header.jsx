@@ -1,15 +1,18 @@
-import Burger from "@/components/svg/Burger";
-import Logo from "@/components/svg/Logo";
+"use client";
+import { useState } from "react";
+import MenuHeader from "@/components/header/MenuHeader";
+import BurgerMenuHeader from "./BurgerMenuHeader";
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const handleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
-        <header className="flex items-center justify-center bg-[#010205] h-[90px] relative text-4xl font-bold">
-            <div className="container mx-auto w-full flex items-center justify-center xl:justify-start">
-                <Logo />
-            </div>
-            {/* <div className="absolute right-8">
-                <Burger color="white" />
-            </div> */}
+        <header id="inicio" className="h-20">
+            {isMenuOpen && <BurgerMenuHeader handleMenu={handleMenu} />}
+            <MenuHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </header>
     );
 };
