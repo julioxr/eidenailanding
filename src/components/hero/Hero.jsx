@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import DiscName from "@/components/svg/DiscName";
 import SpotifyLogo from "@/components/svg/SpotifyLogo";
@@ -95,12 +96,12 @@ const Hero = () => {
 
                     <div className="flex flex-col justify-center items-center gap-8 xl:flex-row xl:w-full xl:justify-between">
                         <div className="z-20 mt-4">
-                            <a href="https://open.spotify.com/intl-es/artist/71baCB6blbKsE4HjrWbUZn?si=vxEtBkiRTryt3cmEdKi_ng">
+                            <Link href="https://open.spotify.com/intl-es/artist/71baCB6blbKsE4HjrWbUZn?si=vxEtBkiRTryt3cmEdKi_ng">
                                 <button className="flex bg-[#1DBC45] gap-2 items-center py-3 px-8 rounded-3xl justify-self-end">
                                     <h3>Eidenai en</h3>
                                     <SpotifyLogo />
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                         <div className="z-20 mt-4 pb-12">
                             <DiscName />
